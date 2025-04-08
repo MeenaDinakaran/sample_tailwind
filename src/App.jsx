@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -16,14 +16,9 @@ import Documentation from "./pages/Documentation";
 import CaseStudy from "./pages/CaseStudy";
 import Learnmore from "./pages/Learnmore";
 import Dataanalytics from "./components/Dataanalytics";
+import ScrollTop from "./components/ScrollTop";
 
-// const ScrollToTop = () => {
-  // const { pathname } = useLocation();
-  // useEffect(() => {
-    // window.scrollTo(0, 0);
-  // }, [pathname]);
-  // return null;
-// };
+
 
 const App = () => {
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
@@ -34,11 +29,16 @@ const App = () => {
   const base = import.meta.env.MODE === "production" ? "/sample_tailwind" : "/";
 
   return (
+    <>
+ 
+    
     <BrowserRouter basename={base}>
-      <ScrollToTop />
-      
-      {/* <Header openDemoForm={openDemoForm} /> */}
+    <ScrollTop/>
+    
+    <Header openDemoForm={openDemoForm} /> 
+     
       <Routes>
+     
         <Route path="/" element={<Home openDemoForm={openDemoForm} />} />
         <Route path="/platform" element={<Platform openDemoForm={openDemoForm} />} />
         <Route path="/data-engineering" element={<DataEngineering openDemoForm={openDemoForm} />} />
@@ -51,10 +51,13 @@ const App = () => {
         <Route path="/Dataanalytics" element={<Dataanalytics />} />
       </Routes>
 
-      {/* <Footer openDemoForm={openDemoForm} /> */}
+      <Footer openDemoForm={openDemoForm} />
 
-      {isDemoFormOpen && <RequestDemoForm closeForm={closeDemoForm} />}
+ 
     </BrowserRouter>
+    {isDemoFormOpen && <RequestDemoForm closeForm={closeDemoForm} />}
+ 
+    </>
   );
 };
 
