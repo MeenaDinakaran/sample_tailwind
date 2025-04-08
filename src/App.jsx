@@ -17,13 +17,13 @@ import CaseStudy from "./pages/CaseStudy";
 import Learnmore from "./pages/Learnmore";
 import Dataanalytics from "./components/Dataanalytics";
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+// const ScrollToTop = () => {
+  // const { pathname } = useLocation();
+  // useEffect(() => {
+    // window.scrollTo(0, 0);
+  // }, [pathname]);
+  // return null;
+// };
 
 const App = () => {
   const [isDemoFormOpen, setIsDemoFormOpen] = useState(false);
@@ -37,7 +37,7 @@ const App = () => {
     <BrowserRouter basename={base}>
       <ScrollToTop />
       
-      <Header openDemoForm={openDemoForm} />
+      {/* <Header openDemoForm={openDemoForm} /> */}
       <Routes>
         <Route path="/" element={<Home openDemoForm={openDemoForm} />} />
         <Route path="/platform" element={<Platform openDemoForm={openDemoForm} />} />
@@ -51,7 +51,7 @@ const App = () => {
         <Route path="/Dataanalytics" element={<Dataanalytics />} />
       </Routes>
 
-      <Footer openDemoForm={openDemoForm} />
+      {/* <Footer openDemoForm={openDemoForm} /> */}
 
       {isDemoFormOpen && <RequestDemoForm closeForm={closeDemoForm} />}
     </BrowserRouter>
